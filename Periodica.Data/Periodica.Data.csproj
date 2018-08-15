@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.4;net45</TargetFrameworks>
+    <RootNamespace>Bluegrams.Periodica.Data</RootNamespace>
+    <Authors>Bluegrams</Authors>
+    <Company>Bluegrams</Company>
+    <Product></Product>
+    <PackageId>Periodica.Data</PackageId>
+    <Description>Data of all chemical elements in the periodic table.</Description>
+    <Copyright>© 2018 Bluegrams</Copyright>
+    <PackageLicenseUrl>https://github.com/bluegrams/Periodica.Data/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/bluegrams/Periodica.Data</PackageProjectUrl>
+    <PackageTags>data elements chemistry periodictable</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+      <BuildYear>$([System.DateTime]::Now.ToString(yy))</BuildYear>
+      <BuildDay>$([System.DateTime]::Now.DayOfYear)</BuildDay>
+      <VersionPrefix>0.1.0</VersionPrefix>
+      <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+      <AssemblyVersion>0.1.0.$(BuildYear)$(BuildDay)</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ElementData.csv">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\ElementData_*.csv">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="2.16.3" />
+  </ItemGroup>
+
+</Project>
