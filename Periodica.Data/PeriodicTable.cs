@@ -69,7 +69,6 @@ namespace Bluegrams.Periodica.Data
             using (StreamReader sr = new StreamReader(assembly.GetManifestResourceStream(streamName)))
             {
                 CsvReader reader = new CsvReader(sr);
-                reader.Configuration.Delimiter = ";";
                 while (reader.Read())
                 {
                     var symbol = reader.GetField("Symbol");
@@ -93,7 +92,6 @@ namespace Bluegrams.Periodica.Data
             {
                 CsvReader reader = new CsvReader(sr);
                 reader.Configuration.CultureInfo = CultureInfo.InvariantCulture;
-                reader.Configuration.Delimiter = ";";
                 reader.Configuration.RegisterClassMap<ElementClassMap>();
                 var items = reader.GetRecords<Element>();
                 foreach(Element item in items)
